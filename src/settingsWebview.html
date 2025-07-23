@@ -1,0 +1,53 @@
+<!-- //jgent/src/settingsWebview.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { font-family: sans-serif; padding: 1em; }
+    input, select { width: 100%; padding: 0.5em; margin: 0.5em 0; }
+    button { padding: 0.5em 1em; }
+  </style>
+</head>
+<body>
+  <h2>JGent 설정</h2>
+  <label>🛰️ Agent API 주소</label>
+  <input type="text" id="agentApiUrl" />
+
+  <label>🧠 모델 이름</label>
+  <input type="text" id="model" />
+
+  <label>⚙️ 실행 모드</label>
+  <select id="defaultMode">
+    <option value="auto">Auto</option>
+    <option value="chat">Chat</option>
+  </select>
+
+  <label>🔌 Ollama 서버 주소</label>
+  <input type="text" id="serverUrl" />
+
+  <button onclick="save()">💾 저장</button>
+
+  <script>
+    const vscode = acquireVsCodeApi();
+
+    window.onload = () => {
+      const params = new URLSearchParams(window.location.search);
+      document.getElementById('serverUrl').value = params.get('serverUrl') || "";
+      document.getElementById('agentApiUrl').value = params.get('agentApiUrl') || "";
+      document.getElementById('model').value = params.get('model') || "";
+      document.getElementById('defaultMode').value = params.get('defaultMode') || "chat";
+    };
+
+    function save() {
+      const data = {
+        serverUrl: document.getElementById("serverUrl").value,
+        agentApiUrl: document.getElementById("agentApiUrl").value,
+        model: document.getElementById("model").value,
+        defaultMode: document.getElementById("defaultMode").value
+      };
+      vscode.postMessage({ command: 'saveSettings', data });
+    }
+  </script>
+</body>
+</html>
