@@ -1,0 +1,127 @@
+.
+|-- .git
+|   |-- COMMIT_EDITMSG
+|   |-- FETCH_HEAD
+|   |-- HEAD
+|   |-- branches
+|   |-- config
+|   |-- description
+|   |-- hooks
+|   |   |-- applypatch-msg.sample
+|   |   |-- commit-msg.sample
+|   |   |-- fsmonitor-watchman.sample
+|   |   |-- post-update.sample
+|   |   |-- pre-applypatch.sample
+|   |   |-- pre-commit.sample
+|   |   |-- pre-merge-commit.sample
+|   |   |-- pre-push.sample
+|   |   |-- pre-rebase.sample
+|   |   |-- pre-receive.sample
+|   |   |-- prepare-commit-msg.sample
+|   |   |-- push-to-checkout.sample
+|   |   |-- sendemail-validate.sample
+|   |   `-- update.sample
+|   |-- index
+|   |-- info
+|   |   `-- exclude
+|   |-- logs
+|   |   |-- HEAD
+|   |   `-- refs
+|   |       |-- heads
+|   |       |   `-- master
+|   |       `-- remotes
+|   |           `-- origin
+|   |               `-- master
+|   |-- objects
+|   |   |-- 0a
+|   |   |   `-- 577ba9329292725c0acc6d8e07016a14027267
+|   |   |-- 1b
+|   |   |   `-- f0be2e192c4c014803244ed7a5595c27b8720b
+|   |   |-- 26
+|   |   |   `-- db3d54fc0ec2d6e3c05aa8b80f2b2ceeccf90b
+|   |   |-- 42
+|   |   |   `-- 56cdab7dd1bdcea805d9ff8f3ac1821a28522c
+|   |   |-- 4a
+|   |   |   `-- 050e1dc727d4197c2521f1e44ad737b021ed78
+|   |   |-- 61
+|   |   |   `-- e806db9b70e6720e39d3c036e71e6b95c56c4c
+|   |   |-- 69
+|   |   |   `-- ead83f942d967fd40e0cdb2950846208c4fae4
+|   |   |-- 70
+|   |   |   `-- c8d64f85c1e2c21f9721483ce6af0fead1b152
+|   |   |-- 75
+|   |   |   `-- a8c625ce582a2777cb801a7fdd9d6c8e13a9e4
+|   |   |-- 7b
+|   |   |   `-- 157fd46511697f70cb636312858043977e6f5a
+|   |   |-- 85
+|   |   |   `-- 4eaa7af460babe99c07c09b01f71c4ee4009f6
+|   |   |-- 8a
+|   |   |   `-- 380aac4aaf82099b061c1d3e3beb863dad1bc9
+|   |   |-- 8c
+|   |   |   `-- 165fb2a0e99cd2b0faf71b24479984d38ade21
+|   |   |-- 8e
+|   |   |   `-- 11485dc587a5b2c8559932bc742bc3592753ff
+|   |   |-- 90
+|   |   |   `-- 219724dbcfae29496322d486299f14d9262625
+|   |   |-- 93
+|   |   |   `-- 76318d741becd05ee669161c51d927dc4c7391
+|   |   |-- 99
+|   |   |   `-- 9a81957f0ef5aabf42a55564c6f0f2552e43cb
+|   |   |-- a1
+|   |   |   `-- 0d5c7e4d03850ebeb86bd91a4812a660f02f07
+|   |   |-- af
+|   |   |   `-- 965364e0f25992012b067fab8a704a480e1b1b
+|   |   |-- c5
+|   |   |   `-- c84ac1eafff61b75e07ea98d39470ea8768df3
+|   |   |-- cf
+|   |   |   `-- e906bfd389576710d173cccde8c7db33bef7fa
+|   |   |-- d7
+|   |   |   `-- 6295a0bcd426a50e1933787143d2a81e0e73ad
+|   |   |-- db
+|   |   |   |-- 89148798e9149f4b444c9fc1e37ad02c88ed75
+|   |   |   `-- dd228c54d6d3dc8c6c676468799e3abde873e1
+|   |   |-- e6
+|   |   |   |-- 9de29bb2d1d6434b8b29ae775ad8c2e48c5391
+|   |   |   `-- bc95354b5d891d0b627b6aa83053998f8d8a8c
+|   |   |-- f0
+|   |   |   `-- d80496bc856e17d6c0bc7f003a4760a72f9344
+|   |   |-- info
+|   |   `-- pack
+|   `-- refs
+|       |-- heads
+|       |   `-- master
+|       |-- remotes
+|       |   `-- origin
+|       |       `-- master
+|       `-- tags
+|-- .gitignore
+|-- .vscode
+|   |-- .Protocol.mb
+|   |-- extensions.json
+|   `-- launch.json
+|-- .vscode-test.mjs
+|-- .vscodeignore
+|-- CHANGELOG.md
+|-- README.md
+|-- eslint.config.mjs
+|-- extension.js
+|-- folder_structure.txt
+|-- jgent-0.0.1.vsix
+|-- jsconfig.json
+|-- package-lock.json
+|-- package.json
+|-- server
+|   |-- agent_handler.py
+|   `-- main.py
+|-- src
+|   |-- commands
+|   |-- extensions.json
+|   |-- settingsWebview.html
+|   |-- utils
+|   `-- webview
+|       `-- chat.html
+|-- test
+|   `-- extension.test.js
+`-- vsc-extension-quickstart.md
+
+50 directories, 75 files

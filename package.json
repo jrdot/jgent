@@ -1,35 +1,32 @@
 {
   "name": "jgent",
-  "displayName": "jgent",
-  "description": "JR Agent",
+  "displayName": "JGent",
+  "description": "VS Code Custom Agent with Local LLM",
   "version": "0.0.1",
+  "main": "./src/extension.js",
   "engines": {
-    "vscode": "^1.102.0"
+    "vscode": "^1.80.0"
   },
-  "categories": [
-    "Other"
+  "activationEvents": [
+    "onCommand:jgent.runAgent",
+    "onCommand:jgent.openSettings"
   ],
   "contributes": {
-    "commands": [{
-      "command": "jgent.askAgent",
-      "title": "Ask Agent"
-    }]
+    "commands": [
+      {
+        "command": "jgent.runAgent",
+        "title": "JGent: Run Agent"
+      },
+      {
+        "command": "jgent.openSettings",
+        "title": "JGent: Open Settings"
+      }
+    ]
   },
   "scripts": {
-    "lint": "eslint .",
-    "pretest": "npm run lint",
-    "test": "vscode-test"
+    "package": "vsce package"
   },
-  "devDependencies": {
-    "@types/vscode": "^1.102.0",
-    "@types/mocha": "^10.0.10",
-    "@types/node": "20.x",
-    "eslint": "^9.25.1",
-    "@vscode/test-cli": "^0.0.11",
-    "@vscode/test-electron": "^2.5.2"
-  },
-    "repository": {
-    "type": "git",
-    "url": "https://github.com/your-name/myex.git"
+  "dependencies": {
+    "axios": "^1.6.0"
   }
 }

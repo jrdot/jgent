@@ -1,0 +1,35 @@
+<!-- // jgent/src/webview/chat.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Chat UI</title>
+  <style>
+    body { font-family: sans-serif; padding: 1em; }
+    #output { white-space: pre-wrap; border: 1px solid #ccc; padding: 1em; margin-top: 1em; height: 300px; overflow: auto;}
+  </style>
+</head>
+<body>
+  <h2>Agent Chat</h2>
+  <textarea id="prompt" rows="3" style="width: 100%"></textarea>
+  <button onclick="sendPrompt()">Send</button>
+  <div id="output"></div>
+
+  <script>
+    const vscode = acquireVsCodeApi();
+
+    function sendPrompt() {
+      const prompt = document.getElementById("prompt").value;
+      vscode.postMessage({ command: 'sendPrompt', prompt });
+    }
+
+    window.addEventListener("message", event => {
+      const message = event.data;
+      if (message.command === "displayResponse") {
+        document.getElementById("output").textContent = message.text;
+      }
+    });
+  </script>
+</body>
+</html>
