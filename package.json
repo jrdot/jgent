@@ -9,12 +9,12 @@
   "categories": [
     "Other"
   ],
-  "activationEvents": [],
+  "activationEvents": ["onCommand:jgent.askAgent"],
   "main": "./extension.js",
   "contributes": {
     "commands": [{
-      "command": "jgent.helloWorld",
-      "title": "ttest"
+      "command": "jgent.askAgent",
+      "title": "Ask Agent"
     }]
   },
   "scripts": {

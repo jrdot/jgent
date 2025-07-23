@@ -1,36 +1,37 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 const vscode = require('vscode');
-
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
+const axios = require('axios');
 
 /**
  * @param {vscode.ExtensionContext} context
  */
 function activate(context) {
+  let disposable = vscode.commands.registerCommand('jgent.askAgent', async function () {
+    const editor = vscode.window.activeTextEditor;
+    if (!editor) {
+      vscode.window.showInformationMessage('편집기 창이 열려있지 않습니다.');
+      return;
+    }
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "jgent" is now active!');
+    const selection = editor.document.getText(editor.selection);
+    const prompt = selection || "선택된 코드가 없습니다.";
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with  registerCommand
-	// The commandId parameter must match the command field in package.json
-	const disposable = vscode.commands.registerCommand('jgent.helloWorld', function () {
-		// The code you place here will be executed every time your command is executed
+    try {
+      const res = await axios.post("http://localhost:8000/agent", {
+        prompt: prompt
+      });
 
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from jgent!');
-	});
+      vscode.window.showInformationMessage(res.data.response || '응답이 없습니다.');
+    } catch (err) {
+      vscode.window.showErrorMessage(`Agent 호출 오류: ${err.message}`);
+    }
+  });
 
-	context.subscriptions.push(disposable);
+  context.subscriptions.push(disposable);
 }
 
-// This method is called when your extension is deactivated
 function deactivate() {}
 
 module.exports = {
-	activate,
-	deactivate
-}
+  activate,
+  deactivate
+};

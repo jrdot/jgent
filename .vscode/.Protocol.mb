@@ -1,0 +1,79 @@
+
+📁 프로젝트 개요: VS Code Custom Agent 확장 앱 개발
+🎯 프로젝트 목적
+Cursor IDE의 Agent 기능과 같은 VS Code 확장 앱 개발
+'설정 창(UI)'를 통해 연결할 AI 서버정보와 모델을 정의하고
+이를 통해 사용자의 요청을 전달하고 그 결과를 받는 방식
+주요 기능으로는 Auto Agent Mode, Chat Mode
+
+
+✅ 주요 기능
+Auto Agent : 가장 핵심이 되는 기능으로써 
+사용자가 선택한 코드 또는 파일의 내용을 사용자 요청과 함께 서버에 전달하고
+전달 받은 로컬 LLM 모델 (예: deepseek-coder:33b)에서 받은 응답을
+VS Code 전용 창(Chat UI)에 표시하며, 그 중 코드로 작성된 내용은 자동으로
+실제 파일에 적용하여 생성 또는 수정/삭제 한다.
+
+Chat Mode : Auto Agent 기능와 유사하지만 코드 내용을 자동으로 적용하는 기능만 제외되고
+수동으로 적용여부를 선택 할 수 있도록 VS Code 전용 창(Chat UI)에 표시한다.
+
+
+
+🧱 시스템 구성도
+┌────────────┐        ┌────────────────────────┐        ┌────────────────────────┐
+│ VS Code UI │◄──────► VS Code Extension (jgent) ├──────► Local Agent API Server │
+└────────────┘        └────────────────────────┘        └──────────┬─────────────┘
+                                                                 │
+                                                      ┌──────────▼────────────┐
+                                                      │    Ollama + LLM      │
+                                                      │ (e.g. deepseek-coder)│
+                                                      └──────────────────────┘
+📦 현재까지 진행된 사항
+단계	내용	완료 여부
+1단계	Node.js, Yeoman, Generator 설치	✅
+2단계	yo code로 JavaScript 확장 앱 생성 (jgent)	✅
+3단계	코드 선택 → API 호출 → 응답 표시 기능 구현	✅
+4단계	FastAPI 기반 로컬 API 서버 설계 예정	🔜
+5단계	Ollama 모델 연동 (예: deepseek-coder:33b)	🔜
+6단계	Webview Chat Panel 및 명령어 확장	🔜
+🛠️ 개발 절차 요약
+🔹 1. VS Code 확장 앱 생성
+npm install -g yo generator-code
+yo code
+# 선택: JavaScript, 이름: jgent
+🔹 2. 커맨드 정의 및 기본 로직 구성
+선택된 코드 텍스트 추출
+
+http://localhost:8000/agent로 POST 요청
+
+응답 메시지 알림창 출력
+
+🔹 3. 로컬 API 서버 구현 (FastAPI)
+/agent 엔드포인트에서 요청 수신
+
+Ollama API(localhost:11434)에 전달
+
+결과를 받아 응답
+
+🔹 4. 확장 기능 개발
+Webview 기반 채팅 UI
+
+Refactor, Explain, Fix 등 다양한 명령 추가
+
+실시간 응답 처리 (stream: true)
+
+📌 개발 목표 범위
+범주	내용
+핵심 기능	VS Code → 로컬 LLM 연동
+인터페이스	명령 기반 + 추후 Chat Webview UI
+사용 환경	로컬 개발 전용, API Key 불필요
+모델	deepseek-coder:33b, codellama, 기타 Ollama 모델
+📄 향후 계획
+/agent FastAPI 서버 코드 제공
+
+VS Code 확장에 Webview Chat UI 추가
+
+다중 명령어 및 Prompt 템플릿 분리
+
+사용자 정의 모델 설정 UI 제공 (선택)
+
